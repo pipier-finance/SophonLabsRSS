@@ -75,7 +75,7 @@ const LayoutBase = (props) => {
             {onLoading ? <LoadingCover/> : <> {children}</> }
           </section>
           {/* 右侧栏样式 */}
-          { CONFIG_NEXT.RIGHT_BAR && <SideAreaRight targetRef={targetRef} slot={rightAreaSlot} {...props}/> }
+          {/* { CONFIG_NEXT.RIGHT_BAR && <SideAreaRight targetRef={targetRef} slot={rightAreaSlot} {...props}/> } */}
       </main>
 
       {/* 右下角悬浮 */}
@@ -88,7 +88,7 @@ const LayoutBase = (props) => {
         </div>
       </div>
 
-      <Footer title={siteInfo?.title}/>
+      {/* <Footer title={siteInfo?.title}/> */}
       </>
   )
 }

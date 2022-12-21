@@ -1,6 +1,6 @@
 import BLOG from '@/blog.config'
-import { getPostBlocks } from '@/lib/notion'
 import { getGlobalNotionData } from '@/lib/notion/getNotionData'
+import { getRssList } from '@/lib/notion/getRssList'
 import * as ThemeMap from '@/themes'
 import { useGlobal } from '@/lib/global'
 const Index = props => {
@@ -10,10 +10,16 @@ const Index = props => {
 }
 
 export async function getStaticProps() {
-  const from = 'index'
-  const props = await getGlobalNotionData({ from })
-  const { siteInfo } = props
-  props.posts = props.allPages.filter(page => page.type === 'Post' && page.status === 'Published')
+  const props = await getRssList()
+  // rss - channel - item - description
+  props.siteInfo = {
+    title: BLOG.TITLE,
+    description: BLOG.DESCRIPTION,
+    pageCover: BLOG.AVATAR,
+  }
+  console.log(props)
+  const { siteInfo, rss } = props
+  props.posts = rss.channel.item
   const meta = {
     title: `${siteInfo?.title} | ${siteInfo?.description}`,
     description: siteInfo?.description,
@@ -32,10 +38,8 @@ export async function getStaticProps() {
   if (BLOG.POST_LIST_PREVIEW === 'true') {
     for (const i in props.posts) {
       const post = props.posts[i]
-      if (post.password && post.password !== '') {
-        continue
-      }
-      post.blockMap = await getPostBlocks(post.id, 'slug', BLOG.POST_PREVIEW_LINES)
+      post.blockMap = post.description
+      console.log(post.blockMap)
     }
   }
 

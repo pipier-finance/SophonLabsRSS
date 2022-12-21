@@ -54,6 +54,7 @@ module.exports = withBundleAnalyzer({
     //     'react-dom': 'preact/compat'
     //   })
     // }
+    config.resolve.fallback = {fs: false, net: false, tls: false, http2: false, dgram: false}
     return config
   }
 })
