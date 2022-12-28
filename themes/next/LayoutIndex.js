@@ -8,11 +8,11 @@ import CONFIG_NEXT from './config_next'
 import BLOG from '@/blog.config'
 
 export const LayoutIndex = (props) => {
-  const { latestPosts } = props
-  const rightAreaSlot = CONFIG_NEXT.RIGHT_LATEST_POSTS && <Card><LatestPostsGroup latestPosts={latestPosts} /></Card>
+  const { posts } = props
+  const rightAreaSlot = CONFIG_NEXT.RIGHT_LATEST_POSTS && <Card><LatestPostsGroup latestPosts={posts} /></Card>
   return <LayoutBase
     headerSlot={CONFIG_NEXT.HOME_BANNER && <Header {...props} />}
-    sideBarSlot={<LatestPostsGroup posts={latestPosts} />}
+    sideBarSlot={<LatestPostsGroup posts={posts} />}
     rightAreaSlot={rightAreaSlot}
     {...props}
   >

@@ -15,19 +15,17 @@ const BlogPostCard = ({ post, showSummary }) => {
   return (
     <Card className="w-full animate__animated animate__fadeIn">
       <div
-        key={post.id}
+        key={post.sign}
         className="flex flex-col-reverse justify-between duration-300"
       >
-        <div className="lg:p-8 p-4 flex flex-col w-full">
-          <Link href={`${BLOG.SUB_PATH}/${post.slug}`} passHref>
+        <div className="lg:p-8 p-4 flex flex-col w-full lg:pl-0">
+          <Link href={`${post.link}`} passHref>
             <a
-              className={`cursor-pointer hover:underline text-3xl ${showPreview ? 'text-center' : ''
-                } leading-tight text-gray-700 dark:text-gray-100 hover:text-blue-500 dark:hover:text-blue-400`}
+              className={`cursor-pointer hover:underline text-2xl leading-tight text-gray-700 dark:text-gray-100 hover:text-blue-500 dark:hover:text-blue-400`}
             >
-             <NotionIcon icon={post.pageIcon} /> {post.title}
+            <NotionIcon icon={post.image} />{post.title}
             </a>
           </Link>
-
           <div
             className={`flex mt-2 items-center ${showPreview ? 'justify-center' : 'justify-start'
               } flex-wrap dark:text-gray-500 text-gray-400 hover:text-blue-500 dark:hover:text-blue-400 `}
@@ -45,61 +43,45 @@ const BlogPostCard = ({ post, showSummary }) => {
                 </>
               )}
               <Link
-                href={`/archive#${post?.date?.start_date?.substr(0, 7)}`}
+                href={`/archive#${post?.pubDate}`}
                 passHref
               >
                 <a className="font-light hover:underline cursor-pointer text-sm leading-4 mr-3">
-                  {post.date?.start_date}
+                  {post.pubDate}
                 </a>
               </Link>
             </div>
-            <div className="md:flex-nowrap flex-wrap md:justify-start inline-block">
-              <div>
-                {' '}
-                {post.tagItems.map(tag => (
-                  <TagItemMini key={tag.name} tag={tag} />
-                ))}
-              </div>
-            </div>
           </div>
 
-          {(!showPreview || showSummary) && !post.results && (
+          {/* {(!showPreview || showSummary) && !post.results && (
             <p className="mt-4 mb-24 text-gray-700 dark:text-gray-300 text-sm font-light leading-7">
               {post.summary}
             </p>
-          )}
+          )} */}
 
           {/* 搜索结果 */}
-          {post.results && (
+          {/* {post.results && (
             <p className="mt-4 text-gray-700 dark:text-gray-300 text-sm font-light leading-7">
               {post.results.map(r => (
                 <span key={r}>{r}</span>
               ))}
             </p>
-          )}
+          )} */}
 
           {showPreview && post?.blockMap && (
-            <div className="overflow-ellipsis truncate">
-              <NotionPage post={post} />
-            </div>
+            <div className="overflow-ellipsis" dangerouslySetInnerHTML={{__html: post.blockMap}}/>
+            // <div className="overflow-ellipsis truncate">
+            //   {post?.blockMap}
+            // </div>
           )}
-
-          <div className="text-right pt-8">
-            <Link href={`${BLOG.SUB_PATH}/${post.slug}`}>
-              <a className="hover:bg-opacity-100 hover:underline transform duration-300 p-3 text-white bg-gray-800 cursor-pointer">
-                {locale.COMMON.ARTICLE_DETAIL}
-                <i className="ml-1 fas fa-angle-right" />
-              </a>
-            </Link>
-          </div>
         </div>
 
-        {CONFIG_NEXT.POST_LIST_COVER && post?.page_cover && (
-          <Link href={`${BLOG.SUB_PATH}/${post.slug}`} passHref>
+        {CONFIG_NEXT.POST_LIST_COVER && post?.image && (
+          <Link href={`${post.link}`} passHref>
             <div className="h-72 w-full relative duration-200 cursor-pointer transform overflow-hidden">
               <Image
                 className="hover:scale-105 transform duration-500"
-                src={post?.page_cover}
+                src={post?.image}
                 alt={post.title}
                 layout="fill"
                 objectFit="cover"

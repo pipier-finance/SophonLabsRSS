@@ -1,5 +1,4 @@
 import BLOG from '@/blog.config'
-import { getGlobalNotionData } from '@/lib/notion/getNotionData'
 import { getRssList } from '@/lib/notion/getRssList'
 import * as ThemeMap from '@/themes'
 import { useGlobal } from '@/lib/global'
@@ -16,8 +15,8 @@ export async function getStaticProps() {
     title: BLOG.TITLE,
     description: BLOG.DESCRIPTION,
     pageCover: BLOG.AVATAR,
+    logo: BLOG.LOGO
   }
-  console.log(props)
   const { siteInfo, rss } = props
   props.posts = rss.channel.item
   const meta = {
@@ -39,7 +38,6 @@ export async function getStaticProps() {
     for (const i in props.posts) {
       const post = props.posts[i]
       post.blockMap = post.description
-      console.log(post.blockMap)
     }
   }
 

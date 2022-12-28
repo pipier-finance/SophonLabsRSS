@@ -45,16 +45,9 @@ module.exports = withBundleAnalyzer({
       }
     ]
   },
-  webpack: (config, { dev, isServer }) => {
+  webpack(config, { dev, isServer }){
     // Replace React with Preact only in client production build
-    // if (!dev && !isServer) {
-    //   Object.assign(config.resolve.alias, {
-    //     react: 'preact/compat',
-    //     'react-dom/test-utils': 'preact/test-utils',
-    //     'react-dom': 'preact/compat'
-    //   })
-    // }
-    config.resolve.fallback = {fs: false, net: false, tls: false, http2: false, dgram: false}
+    config.resolve.fallback = {fs: false, tls: false, http2: false, dgram: false}
     return config
   }
 })

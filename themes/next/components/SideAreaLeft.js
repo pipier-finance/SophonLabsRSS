@@ -22,11 +22,11 @@ const SideAreaLeft = props => {
   const { post, slot, postCount } = props
   const { locale } = useGlobal()
   const showToc = post && post.toc && post.toc.length > 1
-  return <aside id='left' className='hidden lg:block flex-col w-60 mr-4'>
+  return <aside id='left' className='hidden lg:block flex-col w-60 ml-4 md:mt-10'>
 
     <section className='w-60'>
       {/* 菜单 */}
-      <section className='shadow hidden lg:block mb-5 pb-4 bg-white dark:bg-hexo-black-gray hover:shadow-xl duration-200'>
+      <section className='hidden lg:block mb-5 pb-4 bg-white border rounded-md dark:bg-hexo-black-gray duration-200'>
         <Logo {...props} className='h-32' />
         <div className='pt-2 px-2 font-sans'>
           <MenuButtonGroup allowCollapse={true} {...props} />
@@ -37,7 +37,7 @@ const SideAreaLeft = props => {
       </section>
     </section>
 
-    <div className='sticky top-4 hidden lg:block'>
+    <div className='sticky top-4 hidden'>
       <Card>
         <Tabs>
           {showToc && (
@@ -45,20 +45,6 @@ const SideAreaLeft = props => {
               <Toc toc={post.toc} />
             </div>
           )}
-
-          <div key={locale.NAV.ABOUT} className='mb-5 bg-white dark:bg-hexo-black-gray duration-200 py-6'>
-            <InfoCard {...props} />
-            <>
-              <div className='mt-2 text-center dark:text-gray-300 font-light text-xs'>
-                <span className='px-1 '>
-                  <strong className='font-medium'>{postCount}</strong>{locale.COMMON.POSTS}</span>
-                <span className='px-1 busuanzi_container_site_uv hidden'>
-                  | <strong className='pl-1 busuanzi_value_site_uv font-medium' />{locale.COMMON.VISITORS}</span>
-                {/* <span className='px-1 busuanzi_container_site_pv hidden'>
-                | <strong className='pl-1 busuanzi_value_site_pv font-medium'/>{locale.COMMON.VIEWS}</span> */}
-              </div>
-            </>
-          </div>
         </Tabs>
       </Card>
 

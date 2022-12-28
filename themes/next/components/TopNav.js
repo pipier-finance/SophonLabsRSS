@@ -84,27 +84,26 @@ const TopNav = (props) => {
     ) }
     </>
 
-  return (<div id='top-nav' className='z-40 block lg:hidden'>
+  return (<div id='top-nav' className='z-40 sticky block top-0 lg: shadow-md' >
     <SearchDrawer cRef={searchDrawer} slot={searchDrawerSlot}/>
 
     {/* 导航栏 */}
-    <div id='sticky-nav' className={`${CONFIG_NEXT.NAV_TYPE !== 'normal' ? 'fixed' : ''} lg:relative w-full top-0 z-20 transform duration-500`}>
-      <div className='w-full flex justify-between items-center p-4 bg-black dark:bg-gray-800 text-white'>
-        {/* 左侧LOGO 标题 */}
-        <div className='flex flex-none flex-grow-0'>
-          <div onClick={toggleMenuOpen} className='w-8 cursor-pointer'>
-          { isOpen ? <i className='fas fa-times'/> : <i className='fas fa-bars'/> }
-          </div>
-        </div>
-
+    <div id='sticky-nav' className={`${CONFIG_NEXT.NAV_TYPE !== 'normal' ? 'fixed' : ''} lg:relative w-full top-0 z-20 transform duration-500  `}>
+      <div className='w-full flex justify-between items-center bg-white p-4 dark:bg-gray-800 text-white'>
+        {/* Logo 标题 */}
         <div className='flex'>
          <Logo {...props}/>
         </div>
-
         {/* 右侧功能 */}
-        <div className='mr-1 flex justify-end items-center text-sm space-x-4 font-serif dark:text-gray-200'>
+        {/* <div className='mr-1 flex justify-end items-center text-sm space-x-4 font-serif dark:text-gray-200'>
           <div className="cursor-pointer block lg:hidden" onClick={() => { searchDrawer?.current?.show() }}>
             <i className="mr-2 fas fa-search" />{locale.NAV.SEARCH}
+          </div>
+        </div> */}
+          {/* 右侧导航 */}
+          <div className='flex flex-none flex-grow-0'>
+          <div onClick={toggleMenuOpen} className='cursor-pointer text-black'>
+          { isOpen ? <i className='fas fa-times text-lg '/> : <i className='fas fa-bars text-lg'/> }
           </div>
         </div>
       </div>
