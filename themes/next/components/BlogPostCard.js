@@ -17,19 +17,19 @@ const BlogPostCard = ({ post, showSummary }) => {
     <Card className="w-full animate__animated animate__fadeIn">
       <div
         key={post.sign}
-        className="p-4 flex flex-col-reverse justify-between duration-300"
+        className="p-4 lg:p-0 flex flex-col-reverse justify-between duration-300"
       >
             <div className="flex flex-col mb-4 flex-wrap dark:text-gray-500 text-gray-400 text-xs leading-6">
-              <div>
+              <div className='text-gray-600'>
                   {post.category && (
                   <>
                     <Link href={`/category/${post.category}`} passHref>
                       <a className="cursor-pointer font-light text-sm">
-                        <i className="mr-3 fas fa-folder" />
-                        {post.category}
+                        <i className="mr-3 fas fa-globe" />
+                        <span>{post.category}</span>
                       </a>
                     </Link>
-                    <span> · </span>
+                    <span>·</span>
                   </>
                 )}
                 <Link
@@ -42,7 +42,7 @@ const BlogPostCard = ({ post, showSummary }) => {
                 </Link>
               </div>
               <div className='flex flex-col'>
-                <div className='flex justify-between lg:mt-4 lg:mr-4'>
+                <div className='mt-2 flex justify-between lg:mr-4'>
                   <Link href={`${post.link}`} passHref>
                     <a
                       className={`cursor-pointer text-2xl leading-tight text-black font-bold mr-3`}

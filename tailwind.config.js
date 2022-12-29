@@ -18,6 +18,9 @@ module.exports = {
           'background-gray': '#f5f5f5',
           'black-gray': '#101414',
           'light-gray': '#e5e5e5'
+        },
+        labs: {
+          'black': '#010101',
         }
       },
       screens: {
