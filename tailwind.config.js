@@ -19,8 +19,14 @@ module.exports = {
           'black-gray': '#101414',
           'light-gray': '#e5e5e5'
         }
+      },
+      screens: {
+        '4xl': '55rem'
+      },
+      maxWidth: {
+        '8xl': '79rem',
       }
-    }
+    },
   },
   variants: {
     extend: {}

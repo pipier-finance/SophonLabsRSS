@@ -52,7 +52,7 @@ const BlogPostListScroll = ({ posts = [], currentSearch, showSummary = CONFIG_NE
   if (!postsToShow || postsToShow.length === 0) {
     return <BlogPostListEmpty currentSearch={currentSearch} />
   } else {
-    return <div ref={targetRef}>
+    return <div ref={targetRef} className="lg:mr-6">
 
       {/* 文章列表 */}
       <div id='container' className='flex flex-wrap space-y-1 lg:space-y-4'>

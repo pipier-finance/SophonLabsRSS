@@ -22,9 +22,9 @@ const SideAreaLeft = props => {
   const { post, slot, postCount } = props
   const { locale } = useGlobal()
   const showToc = post && post.toc && post.toc.length > 1
-  return <aside id='left' className='hidden lg:block flex-col w-60 ml-4 md:mt-10'>
+  return <aside id='left' className='hidden lg:block flex-col w-80 ml-4 md:mt-10'>
 
-    <section className='w-60'>
+    <section className='w-80 lg:sticky lg:top-20'>
       {/* 菜单 */}
       <section className='hidden lg:block mb-5 pb-4 bg-white border rounded-md dark:bg-hexo-black-gray duration-200'>
         <Logo {...props} className='h-32' />
