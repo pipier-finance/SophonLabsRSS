@@ -46,7 +46,7 @@ const BlogPostCard = ({ post, showSummary }) => {
                   <NotionIcon icon={post?.image} />
                 </div>
                 {showPreview && post?.blockMap && (
-                  <div className="overflow-ellipsis text-justify text-sm text-gray-500 mt-3 break-all" dangerouslySetInnerHTML={{__html: post.blockMap}}/>
+                  <div className="text-justify text-sm text-gray-500 mt-3 base-word-wrap" dangerouslySetInnerHTML={{__html: post.blockMap}}/>
                 )}
               </div>
           </div>
