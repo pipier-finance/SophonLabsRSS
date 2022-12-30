@@ -3,15 +3,12 @@ import { useEffect, useState } from 'react'
 
 import Footer from './components/Footer'
 import JumpToTopButton from './components/JumpToTopButton'
-import SideRight from './components/SideRight'
 import TopNav from './components/TopNav'
 import smoothscroll from 'smoothscroll-polyfill'
 import FloatDarkModeButton from './components/FloatDarkModeButton'
-import Live2D from '@/components/Live2D'
 import LoadingCover from './components/LoadingCover'
 import { useGlobal } from '@/lib/global'
 import BLOG from '@/blog.config'
-import FacebookPage from '@/components/FacebookPage'
 
 /**
  * 基础布局 采用左右两侧布局，移动端使用顶部导航栏
@@ -23,12 +20,6 @@ const LayoutBase = props => {
   const { children, headerSlot, floatSlot, meta, siteInfo } = props
   const [show, switchShow] = useState(false)
   // const [percent, changePercent] = useState(0) // 页面阅读百分比
-  const rightAreaSlot = (
-    <>
-      <FacebookPage />
-      <Live2D />
-    </>
-  )
   const { onLoading } = useGlobal()
 
   const scrollListener = () => {
@@ -67,7 +58,6 @@ const LayoutBase = props => {
           <div className="w-full max-w-4xl overflow-x-hidden">
             {onLoading ? <LoadingCover /> : children}
           </div>
-          <SideRight {...props} slot={rightAreaSlot} />
         </div>
       </main>
 
