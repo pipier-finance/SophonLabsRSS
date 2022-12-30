@@ -28,12 +28,12 @@ const SideAreaLeft = props => {
       {/* 菜单 */}
       <section className='hidden lg:block mb-5 pb-4 bg-white border rounded-md dark:bg-hexo-black-gray duration-200'>
         <Logo {...props} className='h-32' />
-        <div className='pt-2 px-2 font-sans'>
+        {/* <div className='pt-2 px-2 font-sans'>
           <MenuButtonGroup allowCollapse={true} {...props} />
-        </div>
-        {CONFIG_NEXT.MENU_SEARCH && <div className='px-2 pt-2 font-sans'>
+        </div> */}
+        {/* {CONFIG_NEXT.MENU_SEARCH && <div className='px-2 pt-2 font-sans'>
           <SearchInput {...props} />
-        </div>}
+        </div>} */}
       </section>
     </section>
 
