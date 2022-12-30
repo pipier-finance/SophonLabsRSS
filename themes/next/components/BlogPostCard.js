@@ -20,26 +20,19 @@ const BlogPostCard = ({ post, showSummary }) => {
         className="p-4 lg:p-0 flex flex-col-reverse justify-between duration-300"
       >
             <div className="flex flex-col mb-4 flex-wrap dark:text-gray-500 text-gray-400 text-xs leading-6">
-              <div className='text-gray-600'>
+              <div className='text-gray-600 flex items-center justify-start'>
                   {post.category && (
                   <>
-                    <Link href={`/category/${post.category}`} passHref>
-                      <a className="cursor-pointer font-light text-sm">
-                        <i className="mr-3 fas fa-globe" />
-                        <span>{post.category}</span>
-                      </a>
-                    </Link>
-                    <span>·</span>
+                    <div className="cursor-pointer font-light text-sm">
+                      <i className="mr-3 fas fa-globe" />
+                      <span>{post.category}</span>
+                    </div>
+                    <span className='mx-2'>·</span>
                   </>
                 )}
-                <Link
-                  href={`/archive#${post?.pubDate}`}
-                  passHref
-                >
-                  <a className="font-light cursor-pointer text-sm leading-4 mr-3">
-                    {formatDateLocal(post.pubDate, 'MM-DD HH:mm')}
-                  </a>
-                </Link>
+                <div className="font-light cursor-pointer text-sm leading-4">
+                  {formatDateLocal(post.pubDate, 'MM-DD HH:mm')}
+                </div>
               </div>
               <div className='flex flex-col'>
                 <div className='mt-2 flex justify-between lg:mr-4'>
