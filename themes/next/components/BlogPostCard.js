@@ -38,7 +38,7 @@ const BlogPostCard = ({ post, showSummary }) => {
                 <div className='mt-2 flex justify-between lg:mr-4'>
                   <Link href={`${post.link}`} passHref>
                     <a
-                      className={`cursor-pointer text-2xl leading-tight text-black font-bold mr-3`}
+                      className={`cursor-pointer text-xl lg:text-2xl leading-tight text-black font-bold mr-3`}
                     >
                   {post.title}
                     </a>
@@ -46,7 +46,9 @@ const BlogPostCard = ({ post, showSummary }) => {
                   <NotionIcon icon={post?.image} />
                 </div>
                 {showPreview && post?.blockMap && (
-                  <div className="text-justify text-sm text-gray-500 mt-3 base-word-wrap" dangerouslySetInnerHTML={{__html: post.blockMap}}/>
+                  <div className="text-justify text-sm text-gray-500 mt-3 line-clamp-3 overflow-hidden overflow-ellipsis" dangerouslySetInnerHTML={{__html: post.blockMap}}>
+                    
+                  </div>
                 )}
               </div>
           </div>
