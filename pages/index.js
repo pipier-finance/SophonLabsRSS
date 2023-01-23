@@ -33,6 +33,12 @@ export async function getStaticProps() {
     props.posts = props.posts?.slice(0, BLOG.POSTS_PER_PAGE)
   }
 
+  // 处理id
+  for (const i in props.posts) {
+    const post = props.posts[i]
+    post.id = +i + 1
+  }
+
   // 预览文章内容
   if (BLOG.POST_LIST_PREVIEW === 'true') {
     for (const i in props.posts) {

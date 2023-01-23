@@ -18,6 +18,7 @@ let windowTop = 0
  * @returns
  */
 const TopNav = (props) => {
+  console.log('TopNav', props)
   const { tags, currentTag, categories, currentCategory } = props
   const { locale } = useGlobal()
   const searchDrawer = useRef()

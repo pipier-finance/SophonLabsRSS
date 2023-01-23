@@ -34,23 +34,22 @@ const BlogPostCard = ({ post, showSummary }) => {
                   {formatDateLocal(post.pubDate, 'MM-DD HH:mm')}
                 </div>
               </div>
-              <div className='flex flex-col'>
-                <div className='mt-2 flex justify-between lg:mr-4'>
-                  <Link href={`${post.link}`} passHref>
+              <Link href={`${BLOG.SUB_PATH}/article/${post.id}`} passHref>
+                <div className='flex flex-col'>
+                  <div className='mt-2 flex justify-between lg:mr-4'>
                     <a
                       className={`cursor-pointer text-xl lg:text-2xl leading-tight text-black font-bold mr-3`}
                     >
-                  {post.title}
+                      {post.title}
                     </a>
-                  </Link>
-                  <NotionIcon icon={post?.image} />
-                </div>
-                {showPreview && post?.blockMap && (
-                  <div className="text-justify text-sm text-gray-500 mt-3 line-clamp-3 overflow-hidden overflow-ellipsis" dangerouslySetInnerHTML={{__html: post.blockMap}}>
-                    
+                    <NotionIcon icon={post?.image} />
                   </div>
-                )}
-              </div>
+                  {showPreview && post?.blockMap && (
+                    <div className="text-justify text-sm text-gray-500 mt-3 line-clamp-3 overflow-hidden overflow-ellipsis" dangerouslySetInnerHTML={{__html: post.blockMap}}>
+                    </div>
+                  )}
+                </div>
+              </Link>
           </div>
         {CONFIG_NEXT.POST_LIST_COVER && post?.image && (
           <Link href={`${post.link}`} passHref>
