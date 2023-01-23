@@ -72,15 +72,14 @@ export async function getStaticProps({ params: { slug } }) {
     logo: BLOG.LOGO
   }
   const { rss } = props
-  const postLists  = rss.channel.item
-
-   // 处理id
+  const postLists = rss.channel.item
+  
   for (const i in postLists) {
     const post = postLists[i]
     post.slug = +i + 1
   }
-  
-  props.post = postLists.find(post => post.slug === + slug)
+
+  props.post = postLists.find(post => post.slug === +slug)
   const index = postLists.indexOf(props.post)
   props.prev = postLists.slice(index - 1, index)[0] ?? postLists.slice(-1)[0]
   props.next = postLists.slice(index + 1, index + 2)[0] ?? postLists[0]
