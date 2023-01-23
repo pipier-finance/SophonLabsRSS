@@ -12,12 +12,12 @@ import { isBrowser } from '@/lib/utils'
  * @returns
  */
 const Slug = props => {
+  const router = useRouter()
   const { theme, changeLoadingState } = useGlobal()
   const ThemeComponents = ThemeMap[theme]
   const { post, siteInfo } = props
   if (!post) {
     changeLoadingState(true)
-    const router = useRouter()
     setTimeout(() => {
       if (isBrowser()) {
         const article = document.getElementById('container')
@@ -49,7 +49,6 @@ const Slug = props => {
   )
 }
 
-
 export async function getStaticPaths() {
   const { rss } = await getRssList()
   const postLists = rss.channel.item
@@ -59,7 +58,7 @@ export async function getStaticPaths() {
   }
 
   return {
-    paths: postLists.map(row => ({ params: { slug: ''+row.slug } })),
+    paths: postLists.map(row => ({ params: { slug: '' + row.slug } })),
     fallback: true
   }
 }
@@ -76,12 +75,12 @@ export async function getStaticProps({ params: { slug } }) {
   const postLists  = rss.channel.item
 
    // 处理id
-  for (const i in 
-    postLists) {
+  for (const i in postLists) {
     const post = postLists[i]
     post.slug = +i + 1
   }
-  props.post = postLists.find(post => post.slug === +slug)
+  
+  props.post = postLists.find(post => post.slug === + slug)
   const index = postLists.indexOf(props.post)
   props.prev = postLists.slice(index - 1, index)[0] ?? postLists.slice(-1)[0]
   props.next = postLists.slice(index + 1, index + 2)[0] ?? postLists[0]
