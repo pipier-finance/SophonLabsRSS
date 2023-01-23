@@ -73,7 +73,6 @@ export async function getStaticProps({ params: { slug } }) {
   }
   const { rss } = props
   const postLists = rss.channel.item
-  
   for (const i in postLists) {
     const post = postLists[i]
     post.slug = +i + 1
