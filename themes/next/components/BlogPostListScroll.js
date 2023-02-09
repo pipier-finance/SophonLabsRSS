@@ -25,6 +25,7 @@ const BlogPostListScroll = ({ posts = [], currentSearch, showSummary = CONFIG_NE
   }
 
   const handleGetMore = () => {
+    console.log("handleGetMore", hasMore)
     if (!hasMore) return
     updatePage(page + 1)
   }
@@ -33,6 +34,7 @@ const BlogPostListScroll = ({ posts = [], currentSearch, showSummary = CONFIG_NE
   const scrollTrigger = useCallback(throttle(() => {
     const scrollS = window.scrollY + window.outerHeight
     const clientHeight = targetRef ? (targetRef.current ? (targetRef.current.clientHeight) : 0) : 0
+    console.log(scrollS, clientHeight + 100, "fuck")
     if (scrollS > clientHeight + 100) {
       handleGetMore()
     }
@@ -47,26 +49,15 @@ const BlogPostListScroll = ({ posts = [], currentSearch, showSummary = CONFIG_NE
   }, [])
 
   const targetRef = useRef(null)
-  const { locale } = useGlobal()
-
   if (!postsToShow || postsToShow.length === 0) {
     return <BlogPostListEmpty currentSearch={currentSearch} />
   } else {
     return <div ref={targetRef} className="lg:mr-6">
-
       {/* 文章列表 */}
       <div id='container' className='flex flex-wrap space-y-1 lg:space-y-4'>
         {postsToShow.map(post => (
           <BlogPostCard key={post.id} post={post} showSummary={showSummary} />
         ))}
-      </div>
-
-      <div>
-        <div onClick={() => {
-          handleGetMore()
-        }}
-          className='w-full my-4 py-4 text-center cursor-pointer glassmorphism shadow hover:shadow-xl duration-200 dark:text-gray-200'
-        > {hasMore ? locale.COMMON.MORE : `${locale.COMMON.NO_MORE} 😰`} </div>
       </div>
     </div>
   }
@@ -80,6 +71,7 @@ const BlogPostListScroll = ({ posts = [], currentSearch, showSummary = CONFIG_NE
  * @returns {*}
  */
 const getPostByPage = function (page, totalPosts, postsPerPage) {
+  console.log("getPostByPage", page, totalPosts, postsPerPage)
   return totalPosts.slice(
     0,
     postsPerPage * page

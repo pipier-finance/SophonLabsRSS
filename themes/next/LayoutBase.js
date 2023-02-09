@@ -77,18 +77,7 @@ const LayoutBase = (props) => {
           {/* 右侧栏样式 */}
           {/* { CONFIG_NEXT.RIGHT_BAR && <SideAreaRight targetRef={targetRef} slot={rightAreaSlot} {...props}/> } */}
       </main>
-
-      {/* 右下角悬浮 */}
-      <div ref={floatButtonGroup} className='right-8 bottom-12 bottom-24 lg:right-2 fixed justify-end z-20 font-sans'>
-        <div className={(show ? 'animate__animated ' : 'hidden') + ' animate__fadeInUp rounded-md glassmorphism justify-center duration-500  animate__faster flex space-x-2 items-center cursor-pointer '}>
-          <JumpToTopButton percent={percent}/>
-          <JumpToBottomButton />
-          <FloatDarkModeButton/>
-          {floatSlot}
-        </div>
-      </div>
-
-      {/* <Footer title={siteInfo?.title}/> */}
+      <Footer title={siteInfo?.title}/>
       </>
   )
 }
