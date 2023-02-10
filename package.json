@@ -20,6 +20,10 @@
     "bundle-report": "ANALYZE=true yarn build"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.3.0",
+    "@fortawesome/free-brands-svg-icons": "^6.3.0",
+    "@fortawesome/free-solid-svg-icons": "^6.3.0",
+    "@fortawesome/react-fontawesome": "^0.2.0",
     "@giscus/react": "^1.1.2",
     "@next/bundle-analyzer": "^12.1.1",
     "@popperjs/core": "^2.9.3",

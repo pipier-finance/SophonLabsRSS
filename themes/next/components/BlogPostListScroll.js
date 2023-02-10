@@ -25,7 +25,6 @@ const BlogPostListScroll = ({ posts = [], currentSearch, showSummary = CONFIG_NE
   }
 
   const handleGetMore = () => {
-    console.log("handleGetMore", hasMore)
     if (!hasMore) return
     updatePage(page + 1)
   }
@@ -34,7 +33,6 @@ const BlogPostListScroll = ({ posts = [], currentSearch, showSummary = CONFIG_NE
   const scrollTrigger = useCallback(throttle(() => {
     const scrollS = window.scrollY + window.outerHeight
     const clientHeight = targetRef ? (targetRef.current ? (targetRef.current.clientHeight) : 0) : 0
-    console.log(scrollS, clientHeight + 100, "fuck")
     if (scrollS > clientHeight + 100) {
       handleGetMore()
     }
@@ -71,7 +69,6 @@ const BlogPostListScroll = ({ posts = [], currentSearch, showSummary = CONFIG_NE
  * @returns {*}
  */
 const getPostByPage = function (page, totalPosts, postsPerPage) {
-  console.log("getPostByPage", page, totalPosts, postsPerPage)
   return totalPosts.slice(
     0,
     postsPerPage * page

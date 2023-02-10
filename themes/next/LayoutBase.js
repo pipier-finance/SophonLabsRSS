@@ -12,7 +12,6 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import smoothscroll from 'smoothscroll-polyfill'
 import CONFIG_NEXT from './config_next'
-import Live2D from '@/components/Live2D'
 
 /**
  * 基础布局 采用左右两侧布局，移动端使用顶部导航栏
@@ -24,7 +23,6 @@ const LayoutBase = (props) => {
   const { onLoading } = useGlobal()
   const targetRef = React.useRef(null)
   const floatButtonGroup = React.useRef(null)
-  const leftAreaSlot = <Live2D/>
 
   const [show, switchShow] = React.useState(false)
   const [percent, changePercent] = React.useState(0) // 页面阅读百分比
@@ -70,10 +68,10 @@ const LayoutBase = (props) => {
 
       <main id='wrapper' className='flex justify-center flex-1 pb-12'>
           {/* 左侧栏样式 */}
-          <section id='container-inner' className={`${CONFIG_NEXT.NAV_TYPE !== 'normal' ? 'mt-40' : ''} lg:max-w-3xl xl:max-w-4xl flex-grow md:mt-10 min-h-screen w-full`} ref={targetRef}>
+          <section id='container-inner' className={`${CONFIG_NEXT.NAV_TYPE !== 'normal' ? 'mt-40' : ''} lg:max-w-3xl xl:max-w-4xl flex-grow md:mt-10 w-full`} ref={targetRef}>
             {onLoading ? <LoadingCover/> : <> {children}</> }
           </section>
-          <SideAreaLeft slot={leftAreaSlot} targetRef={targetRef} {...props}/>
+          <SideAreaLeft targetRef={targetRef} {...props}/>
           {/* 右侧栏样式 */}
           {/* { CONFIG_NEXT.RIGHT_BAR && <SideAreaRight targetRef={targetRef} slot={rightAreaSlot} {...props}/> } */}
       </main>

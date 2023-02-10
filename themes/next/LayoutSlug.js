@@ -11,7 +11,6 @@ import CONFIG_NEXT from './config_next'
 import { isBrowser } from '@/lib/utils'
 
 export const LayoutSlug = (props) => {
-  console.log("123123123", props)
   const { post, lock, rss } = props
   const latestPosts = rss?.channel?.item?.slice(0, 6)
   if (!lock && post?.blockMap?.block) {
@@ -20,12 +19,6 @@ export const LayoutSlug = (props) => {
   }
   const drawerRight = useRef(null)
   const targetRef = isBrowser() ? document.getElementById('container') : null
-  const floatSlot = post?.toc?.length > 1
-    ? <div className='block lg:hidden'><TocDrawerButton onClick={() => {
-      drawerRight?.current?.handleSwitchVisible()
-    }} /></div>
-    : null
-
   if (!post) {
     return <LayoutBase
           {...props}
@@ -39,19 +32,11 @@ export const LayoutSlug = (props) => {
     <LayoutBase
       {...props}
       headerSlot={CONFIG_NEXT.HOME_BANNER && <Header {...props} />}
-      floatSlot={floatSlot}
       rightAreaSlot={
         CONFIG_NEXT.RIGHT_LATEST_POSTS && <Card><LatestPostsGroup posts={latestPosts} /></Card>
       }
     >
-
       {<ArticleDetail {...props} />}
-
-      {/* 悬浮目录按钮 */}
-      <div className='block lg:hidden'>
-        <TocDrawer post={post} cRef={drawerRight} targetRef={targetRef} />
-      </div>
-
     </LayoutBase>
   )
 }

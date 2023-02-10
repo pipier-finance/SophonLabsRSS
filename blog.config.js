@@ -14,8 +14,8 @@ const BLOG = {
 
   AUTHOR: 'SophonLabs', // 作者
   BIO: 'Web3热点聚合器', // 作者简介
-  LINK: 'https://sophonlabs.xyz', // 网站地址
-  KEYWORDS: '智子实验室,Web3资讯', // 网站关键词 英文逗号隔开
+  LINK: 'https://sophonlabs.new', // 网站地址
+  KEYWORDS: 'SophonLabs,SophoNews,Sophon Media,智子资讯,智子Web3,智子新闻,SophonLabs,SophoNews,Sophon Media', // 网站关键词 英文逗号隔开
   // 社交链接，不需要可留空白，例如 CONTACT_WEIBO:''
   CONTACT_EMAIL: 'mail@sophonlabs', // 邮箱
   CONTACT_WEIBO: '', // 你的微博个人主页
@@ -140,9 +140,9 @@ const BLOG = {
   // 作废配置
   AVATAR: '/logo.png', // logo取public目录下的logo.png
   LOGO:'/purelogo.png', // logo取public目录下的purelogo.png
-  TITLE: process.env.NEXT_PUBLIC_TITLE || '智子实验室Web3资讯', // 站点标题 ，被notion中的页面标题覆盖
+  TITLE: process.env.NEXT_PUBLIC_TITLE || 'SophoNews', // 站点标题 ，被notion中的页面标题覆盖
   HOME_BANNER_IMAGE: './bg_image.jpg', // 首页背景大图, 会被notion中的封面图覆盖，若无封面图则会使用代码中的 /public/bg_image.jpg 文件
-  DESCRIPTION: process.env.NEXT_PUBLIC_DESCRIPTION || '智子Web3资讯', // 站点描述，被notion中的页面描述覆盖
+  DESCRIPTION: process.env.NEXT_PUBLIC_DESCRIPTION || '全球区块链新闻资讯', // 站点描述，被notion中的页面描述覆盖
 
   // 开发相关
   NOTION_ACCESS_TOKEN: process.env.NOTION_ACCESS_TOKEN || '', // Useful if you prefer not to make your database public

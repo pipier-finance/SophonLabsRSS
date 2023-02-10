@@ -19,10 +19,10 @@ export default function ArticleDetail(props) {
   const date = formatDateLocal(post.pubDate, 'MM-DD HH:mm')
 
   return (<div id="container" className="overflow-x-auto flex-grow mx-auto w-screen md:w-full ">
-        <div className="subpixel-antialiased pb-10 px-5 md:px-10  dark:border-gray-700 bg-white dark:bg-hexo-black-gray"
+        <div className="subpixel-antialiased px-5 md:px-10 mt-4  dark:border-gray-700 bg-white dark:bg-hexo-black-gray"
         >
 
-            {showArticleInfo && <header className='animate__slideInDown animate__animated'>
+            {showArticleInfo && <header>
                 {/* 头图 */}
                 {CONFIG_NEXT.POST_HEADER_IMAGE_VISIBLE && post?.type && !post?.type !== 'Page' && post?.page_cover && (
                     <div className="w-full relative md:flex-shrink-0 overflow-hidden">
@@ -32,28 +32,26 @@ export default function ArticleDetail(props) {
                 )}
 
                 {/* title */}
-                <div className="font-bold text-3xl text-black dark:text-white font-serif">
+                <div className="font-bold text-2xl text-black dark:text-white">
                     {post.title}
                 </div>
                 
                 {/* meta */}
-                <section className="mt-2 text-gray-400 dark:text-gray-400 font-light leading-7 text-sm">
-                    <div className='flex'>
+                <section className="mt-2 text-gray-400 dark:text-gray-400 font-light">
+                    <div className='flex items-center text-sm leading-5'>
                         {post.category && <>
-                            <div className="my-auto text-md mr-2">
-                                <i className="mr-1 far fa-folder-open" /> {post.category}
+                            <div className="mr-2">
+                                <i className="mr-1 fa-solid fa-newspaper"/> {post.category}
                             </div>
                         </>}
-                        <div className="pl-1 mr-2">
-                            <i className='far fa-pipe mr-1' /> {date}
+                        <div className="flex items-center">
+                            <i className='far fa-pipe' />
+                            <span>{date}</span>
                         </div>
                     </div>
                 </section>
             </header>}
             {showArticleInfo && <>
-                {/* 版权声明 */}
-                <ArticleCopyright author={BLOG.AUTHOR} url={url} />
-
                 {/* 推荐文章 */}
                 <RecommendPosts currentPost={post} recommendPosts={recommendPosts} />
 
@@ -62,15 +60,9 @@ export default function ArticleDetail(props) {
                 </section>
             </>}
             {showArticleInfo && post?.description && (
-                <div className="text-justify text-sm text-gray-500 mt-3 leading-6" dangerouslySetInnerHTML={{__html: post.description}}>
+                <div className="text-justify text-sm text-gray-500 mt-1 leading-7" dangerouslySetInnerHTML={{__html: post.description}}>
                 </div>
             )}
-
-            {/* 评论互动 */}
-            <div className="duration-200 w-full dark:border-gray-700 bg-white dark:bg-hexo-black-gray">
-                <Comment frontMatter={post} />
-            </div>
         </div>
-
     </div>)
 }

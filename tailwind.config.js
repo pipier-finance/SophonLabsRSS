@@ -21,7 +21,8 @@ module.exports = {
         },
         labs: {
           'black': '#010101',
-        }
+        },
+        'sophon': '#00A7B4'
       },
       screens: {
         '4xl': '55rem'
@@ -29,6 +30,9 @@ module.exports = {
       maxWidth: {
         '8xl': '79rem',
       },
+      lineHeight: {
+        'sophon-size': '30px' 
+      }
     },
   },
   variants: {

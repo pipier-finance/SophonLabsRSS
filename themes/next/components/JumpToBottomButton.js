@@ -47,7 +47,6 @@ const JumpToBottomButton = ({ showPercent = false }) => {
     <div className='dark:text-gray-200' >
       <i className='fas fa-arrow-down' />
     </div>
-    {showPercent && (<div className='dark:text-gray-200 block lg:hidden'>{percent}%</div>)}
   </div>)
 }
 

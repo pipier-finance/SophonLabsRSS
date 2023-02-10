@@ -19,7 +19,7 @@ const BlogPostCard = ({ post, showSummary }) => {
         key={post.sign}
         className="px-4 pt-3 lg:p-0 flex flex-col-reverse justify-between duration-300"
       >
-            <div className="flex flex-col flex-wrap dark:text-gray-500 text-gray-400 text-xs leading-6 pb-4 border-b">
+            <div className="flex flex-col flex-wrap dark:text-gray-500 text-gray-400 text-xs pb-4 border-b">
               <div className='text-gray-600 flex items-center justify-start'>
                   {post.category && (
                   <>
@@ -35,10 +35,10 @@ const BlogPostCard = ({ post, showSummary }) => {
                 </div>
               </div>
               <Link href={`${BLOG.SUB_PATH}/article/${post.id}`} passHref>
-                <div className='flex flex-col w-full my-0 my-auto'>
+                <div className='flex flex-col w-full my-0'>
                   <div className='mt-2 flex justify-between lg:mr-4'>
                     <a
-                      className={`cursor-pointer text-xl lg:text-2xl leading-tight text-black font-bold mr-3`}
+                      className={`cursor-pointer text-xl lg:text-2xl leading-sophon-size text-black font-bold mr-3`}
                     >
                       {post.title}
                     </a>

@@ -18,7 +18,6 @@ let windowTop = 0
  * @returns
  */
 const TopNav = (props) => {
-  console.log('TopNav', props)
   const { tags, currentTag, categories, currentCategory } = props
   const { locale } = useGlobal()
   const searchDrawer = useRef()
@@ -86,11 +85,11 @@ const TopNav = (props) => {
     </>
 
   return (<div id='top-nav' className='z-40 sticky block top-0 lg: shadow-md' >
-    <SearchDrawer cRef={searchDrawer} slot={searchDrawerSlot}/>
+    {/* <SearchDrawer cRef={searchDrawer} slot={searchDrawerSlot}/> */}
 
     {/* 导航栏 */}
-    <div id='sticky-nav' className={`${CONFIG_NEXT.NAV_TYPE !== 'normal' ? 'fixed' : ''} lg:relative w-full top-0 z-20 transform duration-500  `}>
-      <div className='w-full lg:max-w-8xl lg:mx-auto lg:my-0  flex justify-between items-center bg-white p-4 dark:bg-gray-800 text-white'>
+    <div id='sticky-nav' className={`${CONFIG_NEXT.NAV_TYPE !== 'normal' ? 'fixed' : ''} lg:relative w-full top-0 z-20 transform duration-500`}>
+      <div className='w-full lg:max-w-8xl lg:mx-auto lg:my-0  flex justify-between items-center bg-white dark:bg-gray-800 text-white h-14'>
         {/* Logo 标题 */}
         <div className='flex'>
          <Logo {...props}/>
@@ -101,19 +100,19 @@ const TopNav = (props) => {
             <i className="mr-2 fas fa-search" />{locale.NAV.SEARCH}
           </div>
         </div> */}
-          {/* 右侧导航 */}
-          <div className='lg:hidden flex flex-none flex-grow-0'>
+        {/* 右侧导航 */}
+        {/* <div className='lg:hidden flex flex-none flex-grow-0'>
           <div onClick={toggleMenuOpen} className='cursor-pointer text-black'>
           { isOpen ? <i className='fas fa-times text-lg '/> : <i className='fas fa-bars text-lg'/> }
           </div>
-        </div>
+        </div> */}
       </div>
-
+{/* 
       <Collapse type='vertical' isOpen={isOpen}>
         <div className='bg-white py-1 px-5'>
           <MenuButtonGroup {...props} from='top'/>
           </div>
-      </Collapse>
+      </Collapse> */}
     </div>
 
   </div>)
