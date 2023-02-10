@@ -1,11 +1,8 @@
-import InfoCard from './InfoCard'
-import MenuButtonGroup from './MenuButtonGroup'
-import SearchInput from './SearchInput'
+import Image from 'next/image'
 import Toc from './Toc'
 import { useGlobal } from '@/lib/global'
 import React from 'react'
 import Tabs from '@/components/Tabs'
-import Logo from './Logo'
 import Card from './Card'
 import CONFIG_NEXT from '../config_next'
 
@@ -24,10 +21,17 @@ const SideAreaLeft = props => {
   const showToc = post && post.toc && post.toc.length > 1
   return <aside id='left' className='hidden lg:block flex-col w-80 ml-4 md:mt-10'>
 
-    <section className='w-80 lg:sticky lg:top-20'>
+    <section className='lg:sticky lg:top-20'>
       {/* 菜单 */}
-      <section className='hidden lg:block mb-5 pb-4 bg-white border rounded-md dark:bg-hexo-black-gray duration-200'>
-        <Logo {...props} className='h-32' />
+      <section className='hidden lg:block p-4 bg-white border rounded-md dark:bg-hexo-black-gray'>
+        <div className='flex items-center'>
+          <span className='text-xl'>热点文章/资讯</span>
+          <div className=''>
+            {/* todo
+              给过滤出来的数据里面添加一个字段，用来标记是否是热点文章
+            */}
+          </div>
+        </div>
       </section>
     </section>
     <div className='sticky top-4 hidden'>
