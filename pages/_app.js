@@ -4,8 +4,8 @@ import '@/styles/globals.css'
 // custom
 // core styles shared by all of react-notion-x (required)
 import 'react-notion-x/src/styles.css'
-import '@/styles/notion.css' //  重写部分样式
-import "@fortawesome/fontawesome-svg-core/styles.css"; 
+import '@/styles/notion.css'//  重写部分样式
+import '@fortawesome/fontawesome-svg-core/styles.css'
 
 // used for collection views (optional)
 // import 'rc-dropdown/assets/index.css'
@@ -20,12 +20,12 @@ import 'katex/dist/katex.min.css'
 import '@waline/client/dist/waline.css'
 
 import dynamic from 'next/dynamic'
-import { config } from "@fortawesome/fontawesome-svg-core";
+import { config } from '@fortawesome/fontawesome-svg-core'
 import { GlobalContextProvider } from '@/lib/global'
 import { DebugPanel } from '@/components/DebugPanel'
 import { ThemeSwitch } from '@/components/ThemeSwitch'
 import { Fireworks } from '@/components/Fireworks'
-config.autoAddCss = false; 
+config.autoAddCss = false
 const Ackee = dynamic(() => import('@/components/Ackee'), { ssr: false })
 const Gtag = dynamic(() => import('@/components/Gtag'), { ssr: false })
 const Busuanzi = dynamic(() => import('@/components/Busuanzi'), { ssr: false })
