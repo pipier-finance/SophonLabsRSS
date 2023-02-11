@@ -60,7 +60,7 @@ export default function ArticleDetail(props) {
                 </section>
             </>}
             {showArticleInfo && post?.description && (
-                <div className="text-justify text-sm text-gray-500 mt-1 leading-7" dangerouslySetInnerHTML={{__html: post.description}}>
+                <div className="text-justify text-sm text-black mt-1 leading-7 break-words" dangerouslySetInnerHTML={{__html: post.description}}>
                 </div>
             )}
         </div>

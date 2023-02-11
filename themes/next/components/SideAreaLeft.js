@@ -38,7 +38,7 @@ const SideAreaLeft = props => {
       <Card>
         <Tabs>
           {showToc && (
-            <div key={locale.COMMON.TABLE_OF_CONTENTS} className='dark:text-gray-400 text-gray-600 bg-white dark:bg-hexo-black-gray duration-200'>
+            <div key={locale.COMMON.TABLE_OF_CONTENTS} className='dark:text-gray-400 text-black bg-white dark:bg-hexo-black-gray duration-200'>
               <Toc toc={post.toc} />
             </div>
           )}
