@@ -50,8 +50,8 @@ const Slug = props => {
 }
 
 export async function getStaticPaths() {
-  const { rss } = await getRssList()
-  const postLists = rss.channel.item
+  const { feed } = await getRssList()
+  const postLists = feed.entry
   for (const i in postLists) {
     const post = postLists[i]
     post.slug = +i + 1
@@ -71,8 +71,8 @@ export async function getStaticProps({ params: { slug } }) {
     pageCover: BLOG.AVATAR,
     logo: BLOG.LOGO
   }
-  const { rss } = props
-  const postLists = rss.channel.item
+  const { feed } = props
+  const postLists = feed.entry
   for (const i in postLists) {
     const post = postLists[i]
     post.slug = +i + 1

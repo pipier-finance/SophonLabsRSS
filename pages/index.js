@@ -18,8 +18,8 @@ export async function getStaticProps() {
     pageCover: BLOG.AVATAR,
     logo: BLOG.LOGO
   }
-  const { siteInfo, rss } = props
-  props.posts = rss.channel.item
+  const { siteInfo, feed } = props
+  props.posts = feed.entry
   const meta = {
     title: `${siteInfo?.title} | ${siteInfo?.description}`,
     description: siteInfo?.description,
