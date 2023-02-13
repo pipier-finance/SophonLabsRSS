@@ -16,7 +16,7 @@ export default function ArticleDetail(props) {
   const { post, recommendPosts, prev, next, showArticleInfo } = props
   const url = BLOG.LINK + useRouter().asPath
   const { locale } = useGlobal()
-  const date = formatDateLocal(post.pubDate, 'MM-DD HH:mm')
+  const date = formatDateLocal(post.publishedOn, 'MM-DD HH:mm')
 
   return (<div id="container" className="overflow-x-auto flex-grow mx-auto w-screen md:w-full ">
         <div className="subpixel-antialiased px-5 md:px-10 mt-4  dark:border-gray-700 bg-white dark:bg-hexo-black-gray"
@@ -39,9 +39,9 @@ export default function ArticleDetail(props) {
                 {/* meta */}
                 <section className="mt-2 text-gray-400 dark:text-gray-400 font-light">
                     <div className='flex items-center text-sm leading-5'>
-                        {post.category && <>
+                        {post.producer && <>
                             <div className="mr-2">
-                                <i className="mr-1 fa-solid fa-newspaper"/> {post.category}
+                                <i className="mr-1 fa-solid fa-newspaper"/> {post.producer}
                             </div>
                         </>}
                         <div className="flex items-center">

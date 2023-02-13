@@ -18,8 +18,7 @@ export async function getStaticProps() {
     pageCover: BLOG.AVATAR,
     logo: BLOG.LOGO
   }
-  const { siteInfo, feed } = props
-  props.posts = feed.entry
+  const { siteInfo } = props
   const meta = {
     title: `${siteInfo?.title} | ${siteInfo?.description}`,
     description: siteInfo?.description,
@@ -37,7 +36,7 @@ export async function getStaticProps() {
   // 处理id
   for (const i in props.posts) {
     const post = props.posts[i]
-    post.id = +i + 1
+    post.pid = +i + 1
   }
 
   // 预览文章内容

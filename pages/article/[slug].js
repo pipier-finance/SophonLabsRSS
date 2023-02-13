@@ -16,6 +16,7 @@ const Slug = props => {
   const { theme, changeLoadingState } = useGlobal()
   const ThemeComponents = ThemeMap[theme]
   const { post, siteInfo } = props
+  console.log(props, 'what youre props')
   if (!post) {
     changeLoadingState(true)
     setTimeout(() => {
@@ -36,22 +37,22 @@ const Slug = props => {
 
   const meta = {
     title: `${post?.title} | ${siteInfo?.title}`,
-    description: post?.summary,
+    description: post?.description,
     type: 'article',
     slug: 'article/' + post?.slug,
     image: post?.page_cover,
     category: post?.category?.[0],
     tags: post?.tags
   }
-
+  
   return (
     <ThemeComponents.LayoutSlug {...props} showArticleInfo={true} meta={meta} />
   )
 }
 
 export async function getStaticPaths() {
-  const { feed } = await getRssList()
-  const postLists = feed.entry
+  const { posts } = await getRssList()
+  const postLists = posts
   for (const i in postLists) {
     const post = postLists[i]
     post.slug = +i + 1
@@ -71,8 +72,8 @@ export async function getStaticProps({ params: { slug } }) {
     pageCover: BLOG.AVATAR,
     logo: BLOG.LOGO
   }
-  const { feed } = props
-  const postLists = feed.entry
+  const { posts } = props
+  const postLists = posts
   for (const i in postLists) {
     const post = postLists[i]
     post.slug = +i + 1

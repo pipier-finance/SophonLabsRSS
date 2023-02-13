@@ -21,20 +21,20 @@ const BlogPostCard = ({ post, showSummary }) => {
       >
             <div className="flex flex-col flex-wrap dark:text-gray-500 text-gray-400 text-xs pb-4 border-b">
               <div className='text-gray-600 flex items-center justify-start'>
-                  {post.category && (
+                  {post.producer && (
                   <>
                     <div className="cursor-pointer font-light text-sm">
                       {/* <i className="mr-3 fas fa-globe" /> */}
-                      <span>{post.category}</span>
+                      <span>{post.producer}</span>
                     </div>
                     <span className='mx-0.5'>·</span>
                   </>
                 )}
                 <div className="font-light cursor-pointer text-sm leading-4">
-                  {formatDateLocal(post.pubDate, 'MM-DD HH:mm')}
+                  {formatDateLocal(post.publishedOn, 'MM-DD HH:mm')}
                 </div>
               </div>
-              <Link href={`${BLOG.SUB_PATH}/article/${post.id}`} passHref>
+              <Link href={`${BLOG.SUB_PATH}/article/${post.pid}`} passHref>
                 <div className='flex flex-col w-full my-0'>
                   <div className='mt-2 flex justify-between lg:mr-4'>
                     <a
@@ -42,7 +42,7 @@ const BlogPostCard = ({ post, showSummary }) => {
                     >
                       {post.title}
                     </a>
-                    <NotionIcon icon={post?.image} />
+                    <NotionIcon icon={post?.imageUrl} />
                   </div>
                   {showPreview && post?.blockMap && (
                     <div className="text-justify text-sm text-gray-500 mt-3 line-clamp-3 overflow-hidden overflow-ellipsis" dangerouslySetInnerHTML={{__html: post.blockMap}}>
@@ -51,12 +51,12 @@ const BlogPostCard = ({ post, showSummary }) => {
                 </div>
               </Link>
           </div>
-        {CONFIG_NEXT.POST_LIST_COVER && post?.image && (
+        {CONFIG_NEXT.POST_LIST_COVER && post?.imageUrl && (
           <Link href={`${post.link}`} passHref>
             <div className="h-72 w-full relative duration-200 cursor-pointer transform overflow-hidden">
               <Image
                 className="hover:scale-105 transform duration-500"
-                src={post?.image}
+                src={post?.imageUrl}
                 alt={post.title}
                 layout="fill"
                 objectFit="cover"
