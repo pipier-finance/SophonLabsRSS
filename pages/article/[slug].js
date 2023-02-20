@@ -16,7 +16,6 @@ const Slug = props => {
   const { theme, changeLoadingState } = useGlobal()
   const ThemeComponents = ThemeMap[theme]
   const { post, siteInfo } = props
-  console.log(props, 'what youre props')
   if (!post) {
     changeLoadingState(true)
     setTimeout(() => {
@@ -44,7 +43,6 @@ const Slug = props => {
     category: post?.category?.[0],
     tags: post?.tags
   }
-  
   return (
     <ThemeComponents.LayoutSlug {...props} showArticleInfo={true} meta={meta} />
   )

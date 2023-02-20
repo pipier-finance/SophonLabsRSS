@@ -43,7 +43,6 @@ const BlogPostListScroll = (props) => {
 
   // 监听滚动
   useEffect(() => {
-    console.log('useEffect')
     window.addEventListener('scroll', scrollTrigger)
     return () => {
       window.removeEventListener('scroll', scrollTrigger)
@@ -73,7 +72,6 @@ const BlogPostListScroll = (props) => {
  * @returns {*}
  */
 const getPostByPage = (page, totalPosts, postsPerPage) => {
-  console.log('getPostByPage', page, totalPosts, postsPerPage)
   return totalPosts.slice(
     0,
     postsPerPage * page

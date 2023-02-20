@@ -10,7 +10,6 @@ const Index = props => {
 
 export async function getStaticProps() {
   const props = await getRssList()
-  console.log(props, 'what youre reds')
   // rss - channel - item - description
   props.siteInfo = {
     title: BLOG.TITLE,
