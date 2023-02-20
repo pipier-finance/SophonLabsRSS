@@ -13,16 +13,18 @@ import CONFIG_NEXT from '../config_next'
  * @returns {JSX.Element}
  * @constructor
  */
-const BlogPostListScroll = ({ posts = [], currentSearch, showSummary = CONFIG_NEXT.POST_LIST_SUMMARY }) => {
+const BlogPostListScroll = (props) => {
+  const { posts , showSummary, currentSearch} = props
   const postsPerPage = BLOG.POSTS_PER_PAGE
   const [page, updatePage] = useState(1)
   const postsToShow = getPostByPage(page, posts, postsPerPage)
 
   let hasMore = false
-  if (posts) {
+  if (posts && posts.length) {
     const totalCount = posts.length
     hasMore = page * postsPerPage < totalCount
   }
+
 
   const handleGetMore = () => {
     if (!hasMore) return
@@ -33,6 +35,7 @@ const BlogPostListScroll = ({ posts = [], currentSearch, showSummary = CONFIG_NE
   const scrollTrigger = useCallback(throttle(() => {
     const scrollS = window.scrollY + window.outerHeight
     const clientHeight = targetRef ? (targetRef.current ? (targetRef.current.clientHeight) : 0) : 0
+    console
     if (scrollS > clientHeight + 100) {
       handleGetMore()
     }
@@ -40,11 +43,12 @@ const BlogPostListScroll = ({ posts = [], currentSearch, showSummary = CONFIG_NE
 
   // 监听滚动
   useEffect(() => {
+    console.log('useEffect')
     window.addEventListener('scroll', scrollTrigger)
     return () => {
       window.removeEventListener('scroll', scrollTrigger)
     }
-  }, [])
+  }, [page])
 
   const targetRef = useRef(null)
   if (!postsToShow || postsToShow.length === 0) {
@@ -68,7 +72,8 @@ const BlogPostListScroll = ({ posts = [], currentSearch, showSummary = CONFIG_NE
  * @param postsPerPage 每页文章数量
  * @returns {*}
  */
-const getPostByPage = function (page, totalPosts, postsPerPage) {
+const getPostByPage = (page, totalPosts, postsPerPage) => {
+  console.log('getPostByPage', page, totalPosts, postsPerPage)
   return totalPosts.slice(
     0,
     postsPerPage * page
