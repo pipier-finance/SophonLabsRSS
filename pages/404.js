@@ -13,5 +13,4 @@ const NoFound = props => {
   return <ThemeComponents.Layout404 {...props} meta={meta}/>
 }
 
-
 export default NoFound
