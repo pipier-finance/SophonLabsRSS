@@ -14,9 +14,5 @@ const NoFound = props => {
   return <ThemeComponents.Layout404 {...props} meta={meta}/>
 }
 
-export async function getStaticProps () {
-  const props = await getGlobalNotionData({ from: '404' }) || {}
-  return { props }
-}
 
 export default NoFound
