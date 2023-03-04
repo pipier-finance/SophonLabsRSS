@@ -19,9 +19,8 @@ export default function ArticleDetail(props) {
   const date = formatDateLocal(post.publishedOn, 'MM-DD HH:mm')
 
   return (<div id="container" className="overflow-x-auto flex-grow mx-auto w-screen md:w-full ">
-        <div className="subpixel-antialiased px-5 md:px-10 mt-4  dark:border-gray-700 bg-white dark:bg-hexo-black-gray"
+        <div className="px-5 md:px-10 dark:border-gray-700 bg-white dark:bg-hexo-black-gray decoration-0"
         >
-
             {showArticleInfo && <header>
                 {/* 头图 */}
                 {CONFIG_NEXT.POST_HEADER_IMAGE_VISIBLE && post?.type && !post?.type !== 'Page' && post?.page_cover && (
@@ -60,7 +59,7 @@ export default function ArticleDetail(props) {
                 </section>
             </>}
             {showArticleInfo && post?.description && (
-                <div className="text-justify text-sm text-black mt-1 leading-7 break-words" dangerouslySetInnerHTML={{__html: post.description}}>
+                <div className="text-base text-black mt-1 leading-7 break-words" dangerouslySetInnerHTML={{__html: post.description}}>
                 </div>
             )}
         </div>

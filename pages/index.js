@@ -2,6 +2,8 @@ import BLOG from '@/blog.config'
 import { getRssList } from '@/lib/notion/getRssList'
 import * as ThemeMap from '@/themes'
 import { useGlobal } from '@/lib/global'
+import { formatDateLocal } from '@/lib/formatDate'
+
 const Index = props => {
   const { theme } = useGlobal()
   const ThemeComponents = ThemeMap[theme]
@@ -9,8 +11,9 @@ const Index = props => {
 }
 
 export async function getStaticProps() {
-  const props = await getRssList()
+  const props = await getRssList(formatDateLocal(Date.now() , 'YYYYMD'))
   // rss - channel - item - description
+  console.log(props,'getStaticProps')
   props.siteInfo = {
     title: BLOG.TITLE,
     description: BLOG.DESCRIPTION,
