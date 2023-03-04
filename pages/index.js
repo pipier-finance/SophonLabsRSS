@@ -11,9 +11,8 @@ const Index = props => {
 }
 
 export async function getStaticProps() {
-  const props = await getRssList(formatDateLocal(Date.now() , 'YYYYMD'))
+  const props = await getRssList(formatDateLocal(Date.now(), 'YYYYMD'))
   // rss - channel - item - description
-  console.log(props,'getStaticProps')
   props.siteInfo = {
     title: BLOG.TITLE,
     description: BLOG.DESCRIPTION,
