@@ -1,5 +1,6 @@
 import BLOG from '@/blog.config'
 import { getRssList } from '@/lib/notion/getRssList'
+import { getAcitveLists } from '@/lib/notion/getAcitveLists'
 import * as ThemeMap from '@/themes'
 import { useGlobal } from '@/lib/global'
 import { formatDateLocal } from '@/lib/formatDate'
@@ -11,7 +12,9 @@ const Index = props => {
 }
 
 export async function getStaticProps() {
-  const props = await getRssList(formatDateLocal(Date.now(), 'YYYYMD'))
+  const currentData = formatDateLocal(Date.now(), 'YYYYMD')
+  const props = await getRssList(currentData)
+  const activeLists = await getAcitveLists('activeLists')
   // rss - channel - item - description
   props.siteInfo = {
     title: BLOG.TITLE,
@@ -19,6 +22,7 @@ export async function getStaticProps() {
     pageCover: BLOG.AVATAR,
     logo: BLOG.LOGO
   }
+  props.activeLists = activeLists
   const { siteInfo } = props
   const meta = {
     title: `${siteInfo?.title} | ${siteInfo?.description}`,
@@ -32,20 +36,6 @@ export async function getStaticProps() {
     // 滚动列表默认给前端返回所有数据
   } else if (BLOG.POST_LIST_STYLE === 'page') {
     props.posts = props.posts?.slice(0, BLOG.POSTS_PER_PAGE)
-  }
-
-  // 处理id
-  for (const i in props.posts) {
-    const post = props.posts[i]
-    post.pid = +i + 1
-  }
-
-  // 预览文章内容
-  if (BLOG.POST_LIST_PREVIEW === 'true') {
-    for (const i in props.posts) {
-      const post = props.posts[i]
-      post.blockMap = post.description
-    }
   }
 
   return {

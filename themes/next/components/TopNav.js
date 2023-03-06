@@ -17,6 +17,8 @@ let windowTop = 0
  * @param {*} param0
  * @returns
  */
+
+const MenuList = [{id: 1, name: '首页', url: '/'}, {id: 2, name: '快讯', url: '/news'}, {id: 3, name: '深度', url: '/depth'}, {id: 4, name: '专题', url: '/topic'}]
 const TopNav = (props) => {
   const { tags, currentTag, categories, currentCategory } = props
   const { locale } = useGlobal()
@@ -84,15 +86,23 @@ const TopNav = (props) => {
     ) }
     </>
 
-  return (<div id='top-nav' className='z-40 sticky block top-0 lg: shadow-md' >
-    {/* <SearchDrawer cRef={searchDrawer} slot={searchDrawerSlot}/> */}
+  return (<div id='top-nav' className='z-40 sticky block top-0 border-b' >
+    <SearchDrawer cRef={searchDrawer} slot={searchDrawerSlot}/>
 
     {/* 导航栏 */}
-    <div id='sticky-nav' className={`${CONFIG_NEXT.NAV_TYPE !== 'normal' ? 'fixed' : ''} lg:relative w-full top-0 z-20 transform duration-500`}>
-      <div className='w-full lg:max-w-8xl lg:mx-auto lg:my-0  flex justify-between items-center bg-white dark:bg-gray-800 text-white h-14'>
+    <div id='sticky-nav' className={`${CONFIG_NEXT.NAV_TYPE !== 'normal' ? 'fixed' : ''} xl:relative w-full top-0 transform duration-500`}>
+      <div className='w-full xl:max-w-7xl xl:m-auto flex justify-between items-center bg-white dark:bg-gray-800 h-14'>
         {/* Logo 标题 */}
         <div className='flex'>
-         <Logo {...props}/>
+          <Logo {...props}/>
+        </div>
+        <div className='flex-1 flex space-x-16 ml-14 text-sm'>
+          {MenuList&& MenuList.map((item, index) => <a key={item.id} href={item.url} className='text-nav'>
+            {item.name}
+          </a>)}
+        </div>
+        <div className=''>
+            <button type='button' className='flex justify-center items-center rounded-md out h-8 w-20 text-sm px-3 bg-gradient-to-tr from-sophon to-hot text-white shadow-sm'>Connect</button>
         </div>
         {/* 右侧功能 */}
         {/* <div className='mr-1 flex justify-end items-center text-sm space-x-4 font-serif dark:text-gray-200'>
@@ -107,8 +117,7 @@ const TopNav = (props) => {
           </div>
         </div> */}
       </div>
-{/* 
-      <Collapse type='vertical' isOpen={isOpen}>
+      {/* <Collapse type='vertical' isOpen={isOpen}>
         <div className='bg-white py-1 px-5'>
           <MenuButtonGroup {...props} from='top'/>
           </div>

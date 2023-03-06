@@ -11,10 +11,10 @@ const NotionIcon = ({ icon }) => {
   if (icon.startsWith('http')) {
     //   return <Image src={icon} width={30} height={30}/>
     //   eslint-disable-next-line @next/next/no-img-element
-    return <img src={icon} className='w-20 h-14 lg:w-32 lg:h-20 rounded-md transition-all cursor-pointer object-cover'/>
+    return <img src={icon} />
   }
 
-  return <span className='mr-1'>{icon}</span>
+  return <span >{icon}</span>
 }
 
 export default NotionIcon

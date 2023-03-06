@@ -1,13 +1,15 @@
 import BLOG from '@/blog.config'
 import { useGlobal } from '@/lib/global'
+import { getArticeDetail } from '@/lib/notion/getPostBlocks'
 import { getRssList } from '@/lib/notion/getRssList'
+import { formatDateLocal } from '@/lib/formatDate'
 import * as ThemeMap from '@/themes'
 import React from 'react'
 import { useRouter } from 'next/router'
 import { isBrowser } from '@/lib/utils'
 
 /**
- * 根据notion的slug访问页面
+ * 根据id访问页面
  * @param {*} props
  * @returns
  */
@@ -15,8 +17,8 @@ const Slug = props => {
   const router = useRouter()
   const { theme, changeLoadingState } = useGlobal()
   const ThemeComponents = ThemeMap[theme]
-  const { post, siteInfo } = props
-  if (!post) {
+  const { siteInfo } = props
+  if (!props) {
     changeLoadingState(true)
     setTimeout(() => {
       if (isBrowser()) {
@@ -35,13 +37,13 @@ const Slug = props => {
   changeLoadingState(false)
 
   const meta = {
-    title: `${post?.title} | ${siteInfo?.title}`,
-    description: post?.description,
+    title: `${props?.title} | ${siteInfo?.title}`,
+    description: props?.description,
     type: 'article',
-    slug: 'article/' + post?.slug,
-    image: post?.page_cover,
-    category: post?.category?.[0],
-    tags: post?.tags
+    slug: 'article/' + props?.slug,
+    image: props?.page_cover,
+    category: props?.category?.[0],
+    tags: props?.tags
   }
   return (
     <ThemeComponents.LayoutSlug {...props} showArticleInfo={true} meta={meta} />
@@ -49,38 +51,25 @@ const Slug = props => {
 }
 
 export async function getStaticPaths() {
-  const { posts } = await getRssList()
-  const postLists = posts
-  for (const i in postLists) {
-    const post = postLists[i]
-    post.slug = +i + 1
-  }
-
+  const currentData = formatDateLocal(Date.now(), 'YYYYMD')
+  const { posts } = await getRssList(currentData)
   return {
-    paths: postLists.map(row => ({ params: { slug: '' + row.slug } })),
+    paths: posts.map(row => ({ params: { slug: '' + row.id } })),
     fallback: true
   }
 }
 
 export async function getStaticProps({ params: { slug } }) {
-  const props = await getRssList()
+  const currentData = formatDateLocal(Date.now(), 'YYYYMD')
+  const { posts } = await getRssList(currentData)
+  const props = await getArticeDetail(slug)
   props.siteInfo = {
     title: BLOG.TITLE,
     description: BLOG.DESCRIPTION,
     pageCover: BLOG.AVATAR,
     logo: BLOG.LOGO
   }
-  const { posts } = props
-  const postLists = posts
-  for (const i in postLists) {
-    const post = postLists[i]
-    post.slug = +i + 1
-  }
-
-  props.post = postLists.find(post => post.slug === +slug)
-  const index = postLists.indexOf(props.post)
-  props.prev = postLists.slice(index - 1, index)[0] ?? postLists.slice(-1)[0]
-  props.next = postLists.slice(index + 1, index + 2)[0] ?? postLists[0]
+  props.posts = posts
   return {
     props,
     revalidate: 1

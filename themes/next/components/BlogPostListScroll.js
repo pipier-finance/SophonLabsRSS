@@ -53,9 +53,9 @@ const BlogPostListScroll = (props) => {
   if (!postsToShow || postsToShow.length === 0) {
     return <BlogPostListEmpty currentSearch={currentSearch} />
   } else {
-    return <div ref={targetRef} className="lg:mr-6">
+    return <div ref={targetRef}>
       {/* 文章列表 */}
-      <div id='container' className='flex flex-wrap space-y-1 lg:space-y-4'>
+      <div id='container' className='flex flex-wrap'>
         {postsToShow.map(post => (
           <BlogPostCard key={post.id} post={post} showSummary={showSummary} />
         ))}

@@ -22,7 +22,7 @@ class MyDocument extends Document {
           <CommonScript />
         </Head>
 
-        <body className={'tracking-wider subpixel-antialiased dark:bg-night'}>
+        <body className={'dark:bg-night'}>
             <Main />
             <NextScript />
         </body>

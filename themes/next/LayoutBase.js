@@ -1,16 +1,11 @@
 import CommonHead from '@/components/CommonHead'
-import FloatDarkModeButton from './components/FloatDarkModeButton'
 import Footer from './components/Footer'
-import JumpToBottomButton from './components/JumpToBottomButton'
-import JumpToTopButton from './components/JumpToTopButton'
 import LoadingCover from './components/LoadingCover'
 import SideAreaLeft from './components/SideAreaLeft'
-import SideAreaRight from './components/SideAreaRight'
 import TopNav from './components/TopNav'
 import { useGlobal } from '@/lib/global'
 import PropTypes from 'prop-types'
 import React from 'react'
-import smoothscroll from 'smoothscroll-polyfill'
 import CONFIG_NEXT from './config_next'
 
 /**
@@ -19,61 +14,19 @@ import CONFIG_NEXT from './config_next'
  * @constructor
  */
 const LayoutBase = (props) => {
-  const { children, headerSlot, meta, sideBarSlot, floatSlot, rightAreaSlot, siteInfo } = props
+  const { children, headerSlot, meta, sideBarSlot, siteInfo } = props
   const { onLoading } = useGlobal()
   const targetRef = React.useRef(null)
-  const floatButtonGroup = React.useRef(null)
-
-  const [show, switchShow] = React.useState(false)
-  const [percent, changePercent] = React.useState(0) // 页面阅读百分比
-  const scrollListener = () => {
-    const targetRef = document.getElementById('wrapper')
-    const clientHeight = targetRef?.clientHeight
-    const scrollY = window.pageYOffset
-    const fullHeight = clientHeight - window.outerHeight
-    let per = parseFloat(((scrollY / fullHeight * 100)).toFixed(0))
-    if (per > 100) per = 100
-    const shouldShow = scrollY > 100 && per > 0
-
-    if (shouldShow !== show) {
-      switchShow(shouldShow)
-    }
-    changePercent(per)
-  }
-
-  React.useEffect(() => {
-    smoothscroll.polyfill()
-
-    // facebook messenger 插件需要调整右下角悬浮按钮的高度
-    const fb = document.getElementsByClassName('fb-customerchat')
-    if (fb.length === 0) {
-      floatButtonGroup?.current?.classList.replace('bottom-24', 'bottom-12')
-    } else {
-      floatButtonGroup?.current?.classList.replace('bottom-12', 'bottom-24')
-    }
-
-    document.addEventListener('scroll', scrollListener)
-    return () => document.removeEventListener('scroll', scrollListener)
-  }, [show])
 
   return (<>
-
       <CommonHead meta={meta} />
-
       <TopNav slot={sideBarSlot} {...props}/>
-
       <>{headerSlot}</>
-
-      {/* <div className='h-0.5 w-full bg-gray-700 dark:bg-gray-600 hidden lg:block'/> */}
-
-      <main id='wrapper' className='flex justify-center flex-1 pb-12'>
-          {/* 左侧栏样式 */}
-          <section id='container-inner' className={`${CONFIG_NEXT.NAV_TYPE !== 'normal' ? 'mt-40' : ''} lg:max-w-3xl xl:max-w-4xl flex-grow md:mt-10 w-full`} ref={targetRef}>
+      <main id='wrapper' className='flex justify-between pb-12 max-w-7xl m-auto'>
+          <section id='container-inner' className={`${CONFIG_NEXT.NAV_TYPE !== 'normal' ? 'mt-40' : ''} flex-grow xl:max-w-4xl xl:mt-10 xl:mr-12`} ref={targetRef}>
             {onLoading ? <LoadingCover/> : <> {children}</> }
           </section>
           <SideAreaLeft targetRef={targetRef} {...props}/>
-          {/* 右侧栏样式 */}
-          {/* { CONFIG_NEXT.RIGHT_BAR && <SideAreaRight targetRef={targetRef} slot={rightAreaSlot} {...props}/> } */}
       </main>
       <Footer title={siteInfo?.title}/>
       </>
