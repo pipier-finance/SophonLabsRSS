@@ -180,8 +180,15 @@ nav {
   height: 1.25em;
   margin: -0.125em 0.25em;
 }
-
-
+.sophon-button-next {
+  color: #00A7B4;
+}
+.sophon-button-hidden {
+  opacity: 0;
+}
+.sophon-button-prev {
+  color: #00A7B4;
+}
 /* waline评论插件夜间适配 */
 .wl-panel{
   @apply dark:bg-black dark:border-gray-800

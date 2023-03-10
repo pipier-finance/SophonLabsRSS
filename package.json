@@ -20,6 +20,9 @@
     "bundle-report": "ANALYZE=true yarn build"
   },
   "dependencies": {
+    "@chakra-ui/react": "^1.8.9",
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
     "@fortawesome/fontawesome-svg-core": "^6.3.0",
     "@fortawesome/free-brands-svg-icons": "^6.3.0",
     "@fortawesome/free-solid-svg-icons": "^6.3.0",
@@ -36,6 +39,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "fast-xml-parser": "^4.0.12",
     "feed": "^4.2.2",
+    "framer-motion": "^6.5.1",
     "gitalk": "^1.7.2",
     "i18next": "^22.4.7",
     "localStorage": "^1.0.4",
@@ -58,11 +62,11 @@
     "react-dom": "17.0.2",
     "react-facebook": "^8.1.4",
     "react-i18next": "^12.1.1",
-    "react-messenger-customer-chat": "^0.8.0",
     "react-notion-x": "6.15.6",
     "react-share": "^4.4.0",
     "smoothscroll-polyfill": "^0.4.4",
     "swiper": "^9.1.0",
+    "tailwind-scrollbar-hide": "^1.1.7",
     "typed.js": "^2.0.12",
     "use-ackee": "^3.0.0",
     "valine": "^1.4.18"

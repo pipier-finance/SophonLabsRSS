@@ -8,7 +8,7 @@ import { formatDateLocal } from '@/lib/formatDate'
 const News = props => {
   const { theme } = useGlobal()
   const ThemeComponents = ThemeMap[theme]
-  return <ThemeComponents.LayoutIndex {...props} />
+  return <ThemeComponents.LayoutNews {...props} />
 }
 
 export async function getStaticProps() {

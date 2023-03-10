@@ -4,9 +4,9 @@
  * @returns {JSX.Element}
  * @constructor
  */
-const BlogPostListEmpty = ({ currentSearch }) => {
+const DepthListEmpty = ({ currentSearch }) => {
   return <div className='text-center w-full'>
         <p className='text-gray-500 dark:text-gray-300'>没有找到文章 {(currentSearch && <div>{currentSearch}</div>)}</p>
   </div>
 }
-export default BlogPostListEmpty
+export default DepthListEmpty

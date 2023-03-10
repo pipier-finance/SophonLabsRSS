@@ -14,16 +14,15 @@ import CONFIG_NEXT from './config_next'
  * @constructor
  */
 const LayoutBase = (props) => {
-  const { children, headerSlot, meta, sideBarSlot, siteInfo } = props
+  const { children, headerSlot, meta, sideBarSlot, siteInfo, posts } = props
   const { onLoading } = useGlobal()
   const targetRef = React.useRef(null)
-
   return (<>
       <CommonHead meta={meta} />
       <TopNav slot={sideBarSlot} {...props}/>
       <>{headerSlot}</>
-      <main id='wrapper' className='flex justify-between pb-12 max-w-7xl m-auto'>
-          <section id='container-inner' className={`${CONFIG_NEXT.NAV_TYPE !== 'normal' ? 'mt-40' : ''} flex-grow xl:max-w-4xl xl:mt-10 xl:mr-12`} ref={targetRef}>
+      <main id='wrapper' className='flex justify-between pb-12 xl:max-w-7xl m-auto'>
+          <section id='container-inner' className={`${CONFIG_NEXT.NAV_TYPE !== 'normal' ? 'mt-40' : ''} flex-1 xl:max-w-4xl xl:mt-10 xl:mr-12`} ref={targetRef}>
             {onLoading ? <LoadingCover/> : <> {children}</> }
           </section>
           <SideAreaLeft targetRef={targetRef} {...props}/>

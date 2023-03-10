@@ -8,7 +8,7 @@ import { formatDateLocal } from '@/lib/formatDate'
 const Depth = props => {
   const { theme } = useGlobal()
   const ThemeComponents = ThemeMap[theme]
-  return <ThemeComponents.LayoutIndex {...props} />
+  return <ThemeComponents.LayoutDepth {...props} />
 }
 
 export async function getStaticProps() {

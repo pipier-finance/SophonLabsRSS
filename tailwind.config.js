@@ -28,6 +28,8 @@ module.exports = {
         'sborder': '#efeff4',
         'hot':'#333',
         'nav':'#626262',
+        'article-st':'#202020',
+        'nav-dark': '#000'
       },
       screens: {
         '4xl': '55rem'
@@ -48,9 +50,14 @@ module.exports = {
       backgroundColor: {
         'hot': '#fff'
       },
+      divideWidth: {
+        'sophon': '1px'
+      },
       spacing: {
         '2.5': '9px',
-        '0.5': '2px'
+        '0.5': '2px',
+        'sophon-swiper':'896px',
+        'sophon-slice': '296px'
       }
     },
   },
@@ -59,5 +66,6 @@ module.exports = {
   },
   plugins: [
     require('@tailwindcss/line-clamp'),
+    require('tailwind-scrollbar-hide')
   ]
 }
