@@ -55,7 +55,7 @@ export async function getStaticPaths() {
   const { posts } = await getRssList(currentData)
   return {
     paths: posts.map(row => ({ params: { slug: '' + row.id } })),
-    fallback: true
+    fallback: false
   }
 }
 
