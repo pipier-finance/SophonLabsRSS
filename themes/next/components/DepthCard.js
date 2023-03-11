@@ -4,10 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import Card from './Card'
-import TagItemMini from './TagItemMini'
 import CONFIG_NEXT from '../config_next'
-import NotionPage from '@/components/NotionPage'
-import NotionIcon from '@/components/NotionIcon'
 import {formatDateLocal} from '@/lib/formatDate'
 
 const DepthCard = ({ post, showSummary }) => {

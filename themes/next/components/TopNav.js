@@ -20,7 +20,9 @@ import {
   DrawerCloseButton,
   useDisclosure,
   Button,
-  Input
+  Input,
+  useToast,
+  Box
 } from '@chakra-ui/react'
 
 let windowTop = 0
@@ -38,7 +40,20 @@ const TopNav = (props) => {
   const router = useRouter()
   const btnRef = useRef()
   const { isOpen, onOpen, onClose } = useDisclosure()
-  const { locale } = useGlobal()
+  const toast = useToast()
+  const hanleComming = () => {
+    toast({
+      description: '敬请期待',
+      status: 'success',
+      position:'top',
+      duration: 3000,
+      render: () => (
+        <div className='p-2 text-white bg-gradient-to-tr from-sophon to-hot rounded-md'>
+          <span className='ml-4'>敬请期待</span>
+        </div>
+      )
+    })
+  }
 
   return (<div id='top-nav' className='z-40 sticky block top-0 border-b' >
     {/* 导航栏 */}
@@ -54,7 +69,7 @@ const TopNav = (props) => {
           </a>)}
         </div>
         <div className='hidden xl:block'>
-          <button type='button' className='flex justify-center items-center rounded-md out h-9 w-28 text-sm px-3 bg-gradient-to-tr from-sophon to-hot text-white shadow-sm'>Connect</button>
+          <button type='button' onClick={hanleComming} className='flex justify-center items-center rounded-md out h-9 w-28 text-sm px-3 bg-gradient-to-tr from-sophon to-hot text-white shadow-sm'>Connect</button>
         </div>
         {/* 右侧导航 */}
         <div className='xl:hidden pr-4'>
@@ -80,8 +95,8 @@ const TopNav = (props) => {
                 {item.name}
               </a>)}
               <div className='pt-4'>
-                <button type='button' className='flex justify-center items-center rounded-md out h-9 w-32 text-sm px-3 bg-gradient-to-tr from-sophon to-hot text-white shadow-sm'>
-                  <span className=' italic'>Connect</span>
+                <button type='button' onClick={hanleComming} className='flex justify-center items-center rounded-md out h-9 w-32 text-sm px-3 bg-gradient-to-tr from-sophon to-hot text-white shadow-sm'>
+                  <span className=' italic font-medium'>Connect</span>
                 </button>
               </div>
             </div>

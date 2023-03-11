@@ -1,8 +1,6 @@
 import BLOG from 'blog.config'
 import 'animate.css'
 import '@/styles/globals.css'
-
-
 import { config } from '@fortawesome/fontawesome-svg-core'
 import { GlobalContextProvider } from '@/lib/global'
 import { ChakraProvider } from '@chakra-ui/react'
