@@ -77,14 +77,14 @@ const BlogPostListScroll = (props) => {
           }}
           modules={[Navigation]} 
           autoplay={{delay: 3000, disableOnInteraction: false}}  
-          className='cursor-pointer  xl:max-w-4xl'
+          className='cursor-pointer xl:max-w-4xl'
         >
           {isBannerList.map(item => (
             <SwiperSlide key={item.id}>
               <Link href={`/article/${item.id}`}>
                 <div className=''>
                   <img src={item.imageUrl}  className='w-screen h-56 xl:w-sophon-swiper xl:h-sophon-slice object-cover'/>
-                  <div className='absolute h-20 bottom-1.5 w-80 xl:w-full bg-gray-800 bg-opacity-20'>
+                  <div className='absolute h-20 bottom-1.5 w-full bg-gray-800 bg-opacity-20'>
                     <h3 className='text-white p-4 xl:text-xl font-bold'>{item.title}</h3>
                   </div>
                 </div>

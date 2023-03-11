@@ -54,7 +54,7 @@ const TopNav = (props) => {
           </a>)}
         </div>
         <div className='hidden xl:block'>
-          <button type='button' className='flex justify-center items-center rounded-md out h-8 w-20 text-sm px-3 bg-gradient-to-tr from-sophon to-hot text-white shadow-sm'>Connect</button>
+          <button type='button' className='flex justify-center items-center rounded-md out h-9 w-28 text-sm px-3 bg-gradient-to-tr from-sophon to-hot text-white shadow-sm'>Connect</button>
         </div>
         {/* 右侧导航 */}
         <div className='xl:hidden pr-4'>
@@ -75,13 +75,17 @@ const TopNav = (props) => {
           <DrawerCloseButton />
           <DrawerHeader />
           <DrawerBody>
-          <div className='flex flex-col justify-center text-sm text-labs-black font-semibold divide-y-sophon border-subTitle'>
-            {MenuList&& MenuList.map((item, index) => <a key={item.id} href={item.url} className='h-10 leading-10' >
-              {item.name}
-            </a>)}
-          </div>
+            <div className='flex flex-col justify-center text-sm text-labs-black font-semibold divide-y-sophon border-subTitle'>
+              {MenuList&& MenuList.map((item, index) => <a key={item.id} href={item.url} className='h-10 leading-10' >
+                {item.name}
+              </a>)}
+              <div className='pt-4'>
+                <button type='button' className='flex justify-center items-center rounded-md out h-9 w-32 text-sm px-3 bg-gradient-to-tr from-sophon to-hot text-white shadow-sm'>
+                  <span className=' italic'>Connect</span>
+                </button>
+              </div>
+            </div>
           </DrawerBody>
-
           <DrawerFooter>
           </DrawerFooter>
         </DrawerContent>

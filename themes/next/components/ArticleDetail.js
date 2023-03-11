@@ -13,7 +13,7 @@ export default function ArticleDetail(props) {
   const { locale } = useGlobal()
   const date = formatDateLocal(publishedOn, 'HH:mm')
 
-  return (<div id="container" className="overflow-x-auto flex-grow mx-auto w-screen md:w-full ">
+  return (<div id="container" className="m-3">
         <div className="dark:border-gray-700 bg-white dark:bg-hexo-black-gray decoration-0"
         >
             {showArticleInfo && <header>

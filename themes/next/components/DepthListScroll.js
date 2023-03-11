@@ -71,10 +71,17 @@ const DepthListScroll = (props) => {
   const targetRef = useRef(null)
   return <div ref={targetRef} id='container'  className='flex flex-wrap rounded'>
       {/* 标签过滤 */}
-      <div className='flex w-full justify-around mb-6 text-sm overflow-x-scroll border-b pb-4 select-none'>
-        {TagList && TagList.map(item => (<div onClick={() => handleChoiceTag(item)} className={['h-7 bg-gray-500 rounded-full flex items-center p-2 text-white cursor-pointer ', item.id === tag ? 'bg-sophon':''].join('')}>
+      <div className='hidden xl:flex w-full justify-around mb-6 text-sm overflow-x-scroll border-b pb-4 select-none'>
+       {TagList && TagList.map(item => (<div onClick={() => handleChoiceTag(item)} className={['h-7 bg-gray-100 rounded-full flex items-center p-2 cursor-pointer ', item.id === tag ? 'bg-sophon text-white':'text-labs-black'].join('')}>
           <span className=''>{item.name}</span>
         </div>))}
+      </div>
+      <div className='xl:hidden sticky top-14 z-50 w-screen pl-4 pt-4 pb-4  bg-white gap-1 text-xs overflow-x-auto overflow-y-hidden  border-t select-none  scrollbar-hide'>
+        <div className='whitespace-nowrap flex space-x-4'>
+          {TagList && TagList.map(item => (<div onClick={() => handleChoiceTag(item)} className={['bg-gray-100 rounded-md p-2 cursor-pointer ', item.id === tag ? 'bg-sophon text-white':'text-labs-black'].join('')}>
+            <span className='align-top h-6'>{item.name}</span>
+          </div>))}
+        </div>
       </div>
       {postsToShow.map(post => (
         <DepthCard key={post.id} post={post} showSummary={showSummary} />
